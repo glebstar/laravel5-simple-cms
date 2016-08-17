@@ -17,20 +17,8 @@ class AdminController extends BaseController
     public function add(HRequest $request)
     {
         if (Request::isMethod('post')) {
-            $this->validate($request, [
-                'path'  => 'required|regex:/^[a-z0-9\/_]+$/',
-                'title' => 'required|max:255',
-                'body'  => 'required',
-            ]);
-
             $page = new Cms();
-            $page->path = $request->path;
-            $page->title = $request->title;
-            $page->description = Request::input('description', '');
-            $page->keywords = Request::input('keywords', '');
-            $page->body = base64_encode ($request->body);
-            $page->save();
-
+            $this->savePage ($request, $page);
             return redirect('/' . $page->path);
         } else {
             return view('simplecms::admin.add');
@@ -45,19 +33,7 @@ class AdminController extends BaseController
         }
 
         if (Request::isMethod('post')) {
-            $this->validate($request, [
-                'path'  => 'required|regex:/^[a-z0-9\/_]+$/',
-                'title' => 'required|max:255',
-                'body'  => 'required',
-            ]);
-
-            $page->path = $request->path;
-            $page->title = $request->title;
-            $page->description = Request::input('description', '');
-            $page->keywords = Request::input('keywords', '');
-            $page->body = base64_encode ($request->body);
-            $page->save();
-
+            $this->savePage ($request, $page);
             return redirect('/' . $page->path);
         } else {
             return view('simplecms::admin.edit', ['page' => $page]);
@@ -69,5 +45,21 @@ class AdminController extends BaseController
         Cms::where('id', $id)->delete();
 
         return redirect(route('cms'));
+    }
+
+    protected function savePage($request, $page)
+    {
+        $this->validate($request, [
+            'path'  => 'required|regex:/^[a-z0-9\/_]+$/',
+            'title' => 'required|max:255',
+            'body'  => 'required',
+        ]);
+
+        $page->path = $request->path;
+        $page->title = $request->title;
+        $page->description = Request::input('description', '');
+        $page->keywords = Request::input('keywords', '');
+        $page->body = base64_encode ($request->body);
+        $page->save();
     }
 }
