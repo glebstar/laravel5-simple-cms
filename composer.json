@@ -1,0 +1,22 @@
+{
+    "name": "glebstar/laravel5-simple-cms",
+    "description": "Simple CMS for Laravel 5",
+    "keywords": ["cms laravel5"],
+    "homepage": "https://github.com/glebstar/laravel5-simple-cms",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gleb Starkov",
+            "email" : "glebstarkov@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.0",
+        "illuminate/support": "5.x"
+    },
+    "autoload": {
+        "psr-4": {
+            "GlebStarSimpleCms\\": "src"
+        }
+    }
+}
