@@ -77,3 +77,4 @@ Create a layout for cms pages, for example
 Your layout should have @yield('cmspagebody')
 
 If you need, to edit package layouts in resources/views/vendor/simplecms
+
