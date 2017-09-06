@@ -43,7 +43,7 @@ Route::group(['prefix' => 'cms', 'middleware' => 'cms'], function(){
 Route::get('{path}', '\GlebStarSimpleCms\Controllers\CmsController@index')->where('path', '([A-z\d-\/_.]+)?');
 ```
 
-Appli migration
+Apply migration
 
 ```shell
 php artisan migrate
