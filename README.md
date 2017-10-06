@@ -1,4 +1,4 @@
-# Simple CMS for Laravel 5.2
+# Simple CMS for Laravel 5.*
 
 This is a Laravel 5 package - https://github.com/glebstar/laravel5-simple-cms
 
